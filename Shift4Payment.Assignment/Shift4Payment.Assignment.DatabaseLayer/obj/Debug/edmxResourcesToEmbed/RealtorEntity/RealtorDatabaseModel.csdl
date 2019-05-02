@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RealtorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RealtorEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spAddProperty">
+      <Parameter Name="PropertyID" Mode="In" Type="Int32" />
+      <Parameter Name="PropertyName" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="OwnerName" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetAllProperties" ReturnType="Collection(RealtorModel.spGetAllProperties_Result)" />
+    <FunctionImport Name="spAddTenant">
+      <Parameter Name="TenantID" Mode="In" Type="Int32" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Amount" Mode="In" Type="Decimal" />
+      <Parameter Name="PropertyID" Mode="In" Type="Int32" />
+      <Parameter Name="FileName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetPropertyByID" ReturnType="Collection(RealtorModel.spGetPropertyByID_Result)">
+      <Parameter Name="PropertyID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spLoginUser" ReturnType="Collection(RealtorModel.spLoginUser_Result)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spGetAllProperties_Result">
+    <Property Type="Int32" Name="PropertyID" Nullable="false" />
+    <Property Type="String" Name="PropertyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetPropertyByID_Result">
+    <Property Type="Int32" Name="PropertyID" Nullable="false" />
+    <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Zip" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="OwnerName" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="TenantID" Nullable="true" />
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="11" Scale="2" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="spLoginUser_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="25" />
+    <Property Type="Byte" Name="Role" Nullable="false" />
+  </ComplexType>
+</Schema>

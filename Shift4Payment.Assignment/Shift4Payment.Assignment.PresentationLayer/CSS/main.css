@@ -1,0 +1,37 @@
+﻿
+.layout {
+    width: 980px;
+    margin: 0 auto;
+    }
+body {
+    width: 100%;
+}
+.propertyheader {
+    background-color:black;
+    color:white;
+}
+.propertyheader td{
+    padding:2px;
+}
+.altColor {
+    background-color:aliceblue;
+}
+.propertyRow td{
+    padding:3px 2px;
+    border:solid 1px black;
+}
+.header {
+    float:right;
+    width:250px;
+    clear:both;
+}
+.login {
+    width:500px;
+    position:relative;
+    font-family:Verdana;
+    font-size:11px;
+    background-color:lightblue;
+ padding:100px 100px 100px 100px;
+}
+
+
